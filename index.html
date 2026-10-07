@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Dog Decoder — What breed is your dog, really?</title>
+<meta name="description" content="Upload a photo. Get your dog's likely breed mix, care needs, and training tips in seconds." />
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#23281c">
+<link rel="icon" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Dog Decoder">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <span class="wordmark">Dog Decoder</span>
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <h1>What breed is your dog, <em>really</em>?</h1>
+    <p class="sub">Upload one photo. Get a full breakdown — likely mix, grooming, exercise needs, lifespan, and how to train for it.</p>
+
+    <div class="upload-zone" id="uploadZone">
+      <input type="file" id="fileInput" accept="image/*" capture="environment" hidden />
+      <div class="upload-inner" id="uploadInner">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 6C13 6 8 12 8 18C4.5 18.5 2 21.5 2 25C2 28.9 5.1 32 9 32H30C33.9 32 37 28.9 37 25C37 21.7 34.7 18.9 31.5 18.2C31 11.4 26 6 20 6Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M20 15V27M20 15L15 20M20 15L25 20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <p class="upload-label">Drop a photo, or tap to choose one</p>
+        <p class="upload-hint">Clear, well-lit, full body works best</p>
+      </div>
+      <img id="previewImg" class="preview-img" hidden />
+    </div>
+
+    <button id="analyzeBtn" class="btn-primary" disabled>Decode this dog</button>
+  </section>
+
+  <section class="loading" id="loadingState" hidden>
+    <div class="loader"></div>
+    <p id="loadingText">Looking closely…</p>
+  </section>
+
+  <section class="results" id="results" hidden>
+    <div class="result-header">
+      <p class="eyebrow">Our best read</p>
+      <h2 id="breedName">—</h2>
+      <p id="breedConfidence" class="confidence"></p>
+    </div>
+
+    <div class="result-block">
+      <h3>Breed characteristics</h3>
+      <p id="characteristics"></p>
+    </div>
+
+    <div class="result-block">
+      <h3>Grooming</h3>
+      <p id="grooming"></p>
+    </div>
+
+    <div class="result-block">
+      <h3>Exercise needs</h3>
+      <p id="exercise"></p>
+    </div>
+
+    <div class="result-block">
+      <h3>Typical lifespan</h3>
+      <p id="lifespan"></p>
+    </div>
+
+    <div class="result-block">
+      <h3>Training tips</h3>
+      <p id="training"></p>
+    </div>
+
+    <div class="upsell">
+      <p class="upsell-title">Want this as a keepsake guide?</p>
+      <p class="upsell-copy">Get a personalized, printable PDF with your dog's full profile, a custom care calendar, and a page for their photo.</p>
+      <button class="btn-secondary" id="upsellBtn">Get the full guide — $4.99</button>
+    </div>
+
+    <button class="btn-text" id="resetBtn">Decode another dog</button>
+  </section>
+
+  <section class="error" id="errorState" hidden>
+    <p id="errorText">Something went wrong. Try another photo.</p>
+    <button class="btn-text" id="errorResetBtn">Try again</button>
+  </section>
+
+  <button class="btn-text install-btn" id="installBtn" hidden>Install Dog Decoder on this device</button>
+</main>
+
+<footer>
+  <p>Dog Decoder is a companion to <em>About a Dog</em>.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

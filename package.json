@@ -1,0 +1,9 @@
+{
+  "name": "dog-decoder",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Upload a dog photo, get an AI-generated breed and care guide. Installable as a PWA.",
+  "scripts": {
+    "dev": "vercel dev"
+  }
+}
